@@ -8,5 +8,17 @@ The purpose of this program is to deep copy an arbetrary dictionary in preparati
 making it a json.
 '''
 
-def prejson(dictionary_tocopy):
-    return {}
+def prejson(object_tocopy):
+    # this will not work if one of the dictionaries has a property under the key "length"
+    if object_tocopy.length is None:
+        ret = {}
+        for key in object_tocopy.keys:
+            ret[key] = prejson(object_tocopy[key])
+        return ret
+    elif isinstance(object_tocopy, str):
+        return object_tocopy
+    else:
+        ret = []
+        for item in object_tocopy:
+            ret.append(prejson(item))
+        return ret
