@@ -9,7 +9,6 @@ making it a json.
 '''
 
 def prejson(object_tocopy):
-    # this will not work if one of the dictionaries has a property under the key "length"
     if hasattr(object_tocopy, 'append'):
         ret = []
         for item in object_tocopy:
